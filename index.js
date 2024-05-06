@@ -21,3 +21,9 @@ app.post('/personagens', async (req, res) => {
   await pool.query(query, [nome, anime]);
   res.send('Personagem adicionado com sucesso!');
 }); 
+
+app.get('/personagens', async (req, res) => {
+  const query = 'SELECT * FROM personagens WHERE anime = $1';
+  const {rows} = await pool.query(query, [req.query.anime]);
+  res.send(rows);
+});
