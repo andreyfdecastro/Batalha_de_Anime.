@@ -1,3 +1,7 @@
+CREATE DATABASE batalha_entre_personagens_de_anime;
+
+\c batalha_entre_personagens_de_anime;
+
 CREATE TABLE anime_characters (
 id SERIAL PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
