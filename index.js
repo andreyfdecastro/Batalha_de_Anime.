@@ -73,6 +73,15 @@ app.get('/personagens', async (req, res) => {
   const {rows} = await pool.query(query, [req.query.anime]);
   res.send(rows);
 }); 
+app.get('/anime_characters', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM anime_characters');
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.send("Erro ao buscar personagens de anime");
+  }
+});
 
 app.get('/personagens/:id', async (req, res) => {
   const query = 'SELECT * FROM personagens WHERE id = $1';
